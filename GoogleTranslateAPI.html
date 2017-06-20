@@ -1,0 +1,23 @@
+<html>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+
+</script>
+<input type="text" id="query" placeholder="Enter text">
+<button  id="trans">Translate</button><br>
+<div id="ans">Translated Text : </div>
+<script>
+//Change the translational URL by appending your key and source=[SOURCE LANGUAGE] also change target language
+$("#trans").click(function(){
+var query = $("#query").val();
+var targetLanguage = "hi";
+var link = "https://translation.googleapis.com/language/translate/v2?q="+query+"&target="+targetLanguage+"&key=[YOUR-KEY]&source=en";
+    $.ajax({url: link, success: function(result){
+        $("#ans").text("Translated Text : "+result.data.translations[0].translatedText);
+    }});
+});
+</script>
+</body>
+</html>
